@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LuvieSplit: Split payments across multiple cards and LuvieTokens">
+    <title>LuvieSplit - Split Payment App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LuvieSplit</h1>
+            <p>Split your payments across multiple cards and LuvieTokens</p>
+        </header>
+        <main>
+            <!-- Authentication Section -->
+            <div id="auth-section">
+                <h2>Login or Register</h2>
+                <form id="auth-form">
+                    <input type="email" id="auth-email" class="input-field" placeholder="Email" required>
+                    <input type="password" id="auth-password" class="input-field" placeholder="Password" required>
+                    <button type="submit" class="auth-button" id="login-button" aria-label="Login">Login</button>
+                    <button type="submit" class="auth-button" id="register-button" aria-label="Register">Register</button>
+                </form>
+                <p id="auth-message"></p>
+            </div>
+
+            <!-- Payment Section -->
+            <div id="payment-section" style="display: none;">
+                <h2>Split Payment</h2>
+                <form id="payment-form" class="payment-form">
+                    <label for="amount">Total Amount ($)</label>
+                    <input type="number" id="amount" step="0.01" min="0.50" required>
+                    <label for="card1-amount">Card 1 Amount ($)</label>
+                    <input type="number" id="card1-amount" step="0.01" min="0.50" required>
+                    <div class="card-element" id="card-element1"></div>
+                    <label for="card2-amount">Card 2 Amount ($)</label>
+                    <input type="number" id="card2-amount" step="0.01" min="0.50" required>
+                    <div class="card-element" id="card-element2"></div>
+                    <label for="lvt-amount">LuvieTokens (LVT)</label>
+                    <input type="number" id="lvt-amount" step="0.01" min="0" placeholder="Optional LVT payment">
+                    <button type="submit" class="pay-button" aria-label="Pay Now">Pay Now</button>
+                </form>
+                <p id="fee-message"></p>
+                <p id="error-message"></p>
+            </div>
+
+            <!-- LuvieTokens Section -->
+            <div id="tokens-section" style="display: none;">
+                <h2>LuvieTokens (LVT)</h2>
+                <p>Balance: <span id="lvt-balance">0</span> LVT</p>
+                <p>Eco Impact: <span id="eco-impact">0</span> trees/zones</p>
+                <button id="exchange-lvt" class="auth-button" aria-label="Exchange LVT">Exchange LVT</button>
+                <button id="donate-lvt" class="auth-button" aria-label="Donate to Eco Projects">Donate to Eco Projects</button>
+            </div>
+
+            <!-- Mars Mode Section -->
+            <div id="mars-section" style="display: none;">
+                <h2>Mars Mode</h2>
+                <p>Pay with LVT and Martian resources</p>
+                <button id="mars-payment" class="auth-button" aria-label="Mars Payment">Mars Payment</button>
+            </div>
+
+            <!-- Logout Button -->
+            <button id="logout-button" style="display: none;" class="auth-button" aria-label="Logout">Logout</button>
+        </main>
+        <footer>
+            <p>© 2025 LuvieSplit. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="utils.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>
