@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const stripe = Stripe('pk_test_51YOUR_STRIPE_KEY'); // Замени на реальный ключ из Stripe Dashboard
+    const stripe = Stripe('pk_test_51RNLxE4P7WBOXyuuGFhHP9jRfomKL3mkohcNCkRXvP4uh7hj1CkCGyVIazHIeJdFISqhx4pCQjyW10PNiZfy8FdD00DHp6Lbb6');
     const elements = stripe.elements();
     const cardElement1 = elements.create('card');
     const cardElement2 = elements.create('card');
