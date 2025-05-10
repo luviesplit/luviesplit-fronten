@@ -1,0 +1,222 @@
+/* General styles for the page */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #22C55E 100%); /* Triple gradient with green */
+    color: #D1D5DB;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* First background layer: Transaction lines pattern */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px), 
+                linear-gradient(0deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px); /* Green transaction lines */
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* Second background layer: Animated flowing lines */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 45%, rgba(94, 234, 212, 0.3) 50%, transparent 55%); /* Flowing green lines */
+    opacity: 0.3;
+    z-index: 0;
+    animation: flow 10s linear infinite;
+}
+
+/* Animation for flowing lines */
+@keyframes flow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Container for content with glassmorphism */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(12px); /* Glassmorphism blur */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Logo styles (text-based, replace with image if available) */
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    font-weight: 900;
+    color: #22C55E; /* Neon green */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* Logo pulse animation */
+@keyframes pulse {
+    0% { text-shadow: 0 0 5px #22C55E, 0 0 10px #22C55E, 0 0 15px #F472B6; transform: scale(1); }
+    50% { text-shadow: 0 0 10px #22C55E, 0 0 20px #22C55E, 0 0 30px #F472B6; transform: scale(1.05); }
+    100% { text-shadow: 0 0 5px #22C55E, 0 0 10px #22C55E, 0 0 15px #F472B6; transform: scale(1); }
+}
+
+/* Slogan styles */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6em;
+    font-weight: 500;
+    color: #22C55E; /* Neon green */
+    margin: 10px 0;
+    text-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+    animation: slideIn 1.5s ease-in-out;
+}
+
+/* Slogan slide-in animation */
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Login/Registration form styles */
+#auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+/* Divider to symbolize payment splitting */
+#auth-form::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #22C55E, #F472B6); /* Green to pink gradient divider */
+    opacity: 0.7;
+}
+
+/* Input fields */
+.input-field {
+    padding: 14px;
+    font-size: 1.1em;
+    background: rgba(255, 255, 255, 0.05); /* Semi-transparent input */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: #FFFFFF;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-field:focus {
+    border-color: #22C55E; /* Neon green */
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+/* Button styles */
+.auth-button {
+    padding: 14px;
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.auth-button[type="submit"] {
+    background-color: #3B82F6; /* Neon blue for Login */
+    color: #FFFFFF;
+}
+
+.auth-button[type="submit"]:hover {
+    background-color: #2563EB; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+}
+
+.auth-button#register-button {
+    background-color: #22C55E; /* Neon green for Register */
+    color: #FFFFFF;
+}
+
+.auth-button#register-button:hover {
+    background-color: #16A34A; /* Darker green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.7);
+}
+
+/* Card icon effect on buttons */
+.auth-button::before {
+    content: '💳'; /* Card icon for payment theme */
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3em;
+    opacity: 0.4;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 20px;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    font-size: 0.9em;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    #auth-form::before {
+        display: none; /* Hide divider on small screens */
+    }
+
+    .auth-button::before {
+        display: none; /* Hide card icon on small screens */
+    }
+}
